@@ -50,3 +50,19 @@
   .lightText {
     color: hsla(219, 2%, 55%, 1.0);
   }
+
+  .socialSection {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+
+  .svgLogos {
+    color: white;
+    margin: 0 10px;
+  }
+
+  .svgLogos:hover {
+    opacity: 60%;
+    cursor: pointer;
+  }
