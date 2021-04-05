@@ -4,7 +4,7 @@ import utilStyles from '../styles/utils.module.css'
 import styles from "../styles/home.module.css"
 
 import Link from 'next/link'
-import Date from '../components/date'
+import Date from '../components/Date'
 
 import { getSortedPostsData } from '../lib/posts'
 import SpotifySection from '../components/SpotifySection'
