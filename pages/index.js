@@ -13,7 +13,7 @@ export async function getStaticProps() {
   const allPostsData = getSortedPostsData()
 
   var myHeaders = new Headers();
-  myHeaders.append("Authorization", "Bearer BQDda9d7Pe-XRvAJsWCXBBYtjUiEiR29xepSbGuJId19q-EO0ZJ-IxxMSjtfViPGTNdGWKpzZchgeqjZ-A3yCkVDu7uJt5LFY0aoKLj8MO101eyKbqTCDgLXZvZ_cHVutkvP2KA0fwa3c1r6mD2pZT-OWQ");
+  myHeaders.append("");
 
   var requestOptions = {
     method: 'GET',
