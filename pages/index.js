@@ -7,19 +7,18 @@ import Link from 'next/link'
 import Date from '../components/Date'
 
 import { getSortedPostsData } from '../lib/posts'
-import SpotifySection from '../components/SpotifySection'
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData()
 
-  var myHeaders = new Headers();
-  myHeaders.append("");
+  // var myHeaders = new Headers();
+  // myHeaders.append("");
 
-  var requestOptions = {
-    method: 'GET',
-    headers: myHeaders,
-    redirect: 'follow'
-  };
+  // var requestOptions = {
+  //   method: 'GET',
+  //   headers: myHeaders,
+  //   redirect: 'follow'
+  // };
 
   // const res = await fetch("https://api.spotify.com/v1/me/top/artists", requestOptions)
   // const data = await res.json();
