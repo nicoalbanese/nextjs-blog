@@ -1,68 +1,69 @@
-import Head from 'next/head'
-import Layout, { siteTitle } from '../components/layout'
-import utilStyles from '../styles/utils.module.css'
-import styles from "../styles/home.module.css"
+import Head from "next/head";
+import Layout, { siteTitle } from "../components/layout";
+import utilStyles from "../styles/utils.module.css";
+import SpotifySection from "../components/SpotifySection";
 
-import Link from 'next/link'
-import Date from '../components/Date'
+import Link from "next/link";
+import Date from "../components/Date";
 
-import { getSortedPostsData } from '../lib/posts'
+import { getSortedPostsData } from "../lib/posts";
 
 export async function getStaticProps() {
-  const allPostsData = getSortedPostsData()
+  const allPostsData = getSortedPostsData();
 
-  // var myHeaders = new Headers();
-  // myHeaders.append("");
-
-  // var requestOptions = {
-  //   method: 'GET',
-  //   headers: myHeaders,
-  //   redirect: 'follow'
-  // };
-
-  // const res = await fetch("https://api.spotify.com/v1/me/top/artists", requestOptions)
-  // const data = await res.json();
-
-  // const cpres = await fetch("https://api.spotify.com/v1/me/player/currently-playing", requestOptions)
-  // const cpData = await cpres.json();
+  const spotifyRes = await fetch("http://localhost:3000/api/spotifyData");
+  // console.log(spotifyRes)
+  const spotifyData = await spotifyRes.json();
 
   return {
     props: {
       allPostsData,
+      spotifyData,
       // data,
       // cpData
-    }
-  }
+    },
+  };
 }
 
-
-export default function Home({ allPostsData }) {
-
-  // console.log(data)
+export default function Home({ allPostsData, spotifyData }) {
+  // console.log(spotifyData);
   return (
     <Layout home>
       <Head>
         <title>{siteTitle}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-        <p>I'm an investor at <a href="https://www.ascensionventures.com">Ascension</a> where I focus on pre-Seed investments. I also help run the <a href="https://www.debutsessions.co.uk">Debut Sessions</a>, a virtual pitch initiative aiming to democratise fundraising for pre-Seed startups.</p>
-        <p>Aside from work, I'm an avid football fan (COYG) and love building things. I also love and used to make music and always love to talk music-tech.</p>
+        <p>
+          I'm an investor at{" "}
+          <a href='https://www.ascensionventures.com'>Ascension</a> where I
+          focus on pre-Seed investments. I also help run the{" "}
+          <a href='https://www.debutsessions.co.uk'>Debut Sessions</a>, a
+          virtual pitch initiative aiming to democratise fundraising for
+          pre-Seed startups.
+        </p>
+        <p>
+          Aside from work, I'm an avid football fan (COYG) and love building
+          things. I also love and used to make music and always love to talk
+          music-tech.
+        </p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
-              <Link href={`/posts/${id}`}><a>{title}</a></Link>
+              <Link href={`/posts/${id}`}>
+                <a>{title}</a>
+              </Link>
               <br />
-              <small className={utilStyles.lightText}><Date dateString={date} /></small>
+              <small className={utilStyles.lightText}>
+                <Date dateString={date} />
+              </small>
             </li>
           ))}
         </ul>
       </section>
-      {/* {data &&
-        <SpotifySection data={data} cpData={cpData}/>
-      } */}
+      {spotifyData && <SpotifySection cpData={spotifyData} />}
     </Layout>
-  )
+  );
 }
