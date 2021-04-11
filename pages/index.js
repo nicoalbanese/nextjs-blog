@@ -11,11 +11,11 @@ import { getSortedPostsData } from "../lib/posts";
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
 
-  // const spotifyRes = await fetch("http://gooky.io/api/spotifyData");
+  const spotifyRes = await fetch("https://gooky.io/api/spotifyData");
   // console.log(spotifyRes)
-  // const spotifyData = await spotifyRes.json();
+  const spotifyData = await spotifyRes.json();
 
-  const spotifyData = { isPlaying: false };
+  // const spotifyData = { isPlaying: false };
 
   return {
     props: {
