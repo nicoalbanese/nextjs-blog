@@ -24,6 +24,7 @@ export async function getStaticProps() {
       // data,
       // cpData
     },
+    revalidate: 1,
   };
 }
 
